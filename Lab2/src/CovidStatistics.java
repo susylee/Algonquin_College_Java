@@ -1,8 +1,16 @@
 
 /**
+ * 
+ * This class covidstatistics displays the 
+ * number of covid patients in different proviences of canada 
+ * in given months and shows the number of recover patients in that month.
+ * 
+ * 
  * TASK: Remember to include all necessary headers for your Javadoc, descriptions and explanations of what you have done in the appropriate places.
  * ENSURE that you add appropriate Javadoc style comments to relevant parts of this code as you update this program to show that you understand it.
  *
+ * This program prints the given data in the arrays according to the example given for this assignment in brightspace.
+ * 
  * <pre>Class: CST8284</pre>
  * <pre>Professor: Fedor Ilitchev</pre>
  * <pre>Sept 21, 2022</pre>
@@ -10,10 +18,17 @@
  * @author Su Yeoun Lee
  * @version 11.0.16
  * @since 1.8.0_342
+ * 
  */
 
-public class CovidStatistics
-{
+public class CovidStatistics {
+	
+	/** 
+	 * main method 
+	 * @param 
+	 * args arguments from command line 
+	*/
+	
 	public static void main(String[] args)
 	{
 		final int ROWS = 7;
@@ -42,8 +57,6 @@ public class CovidStatistics
 					"Prince Edward Island"         
 			};
 		System.out.println("             Month      Feb     March   April   May     June    July    Aug     Sept");
-//		System.out.printf("%-15s %-6s %-4s %-4s %-3s %-3s %-3s %-4s %-5s\n",
-//				"              Month","      Feb","    March","    April","   May","   June","   July","    Aug","     Sept");
 		System.out.println();
 
 		/** TASK: It is important to know the number of spice traders per city. So you need to print out the number of traders for all cities (content of the array) for each month.
@@ -56,11 +69,11 @@ public class CovidStatistics
 		// for(int i=0; i<provinces.length; i++) { //Prince Edward Island.length = 20
 		//	   System.out.println(provinces[i].length() + " ");
 		// }
-		int i,j;
 
-		int sum = 0;
+		int i,j, sum=0;
+
 		for( i = 0; i < ROWS; i++) {
-			System.out.printf("%21s", provinces[i] + "\t");
+			System.out.printf("%21s", provinces[i] + "\t"); //Prince Edward Island.length = 20
 			for( j = 0; j < COLUMNS; j++) {
 				System.out.print(patients[i][j] +"\t" );
 			}
@@ -75,7 +88,7 @@ public class CovidStatistics
 		System.out.printf("%21s","Recovered Patients");
 
 		// TO DO: INSERT CODE HERE FOR THIS SECTION!!! Check the sample output file (SpiceOutput) to see the expected pattern.
-		
+
 		for( i = 0; i < COLUMNS; i++) {
 			for( j = 0; j < ROWS; j++) {
 				sum += patients[j][i];
@@ -83,6 +96,7 @@ public class CovidStatistics
 			System.out.printf("%8s",sum);
 			sum = 0;
 		}
+
 		System.out.println(); 
 		System.out.println(); 
 		System.out.println("               Vaccinate and maintain good health practices!" );
