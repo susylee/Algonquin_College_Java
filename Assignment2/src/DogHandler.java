@@ -1,68 +1,96 @@
 import java.io.IOException;
-
 import javax.swing.plaf.synth.SynthOptionPaneUI;
 
-public class DogHandler {
+/**
+ * This class demonstrates the use of try catch blocks which throw exceptions of various types.
+ * 
+ * @see
+ * @author Su Yeoun Lee
+ */
 
-	class ExceptionDog extends Exception {
-		//These exception subclasses are empty; they contain no code
+public class DogHandler {
+	/**
+	 * Inner class ExceptionDog extends Exception class
+	 */
+	public static class ExceptionDog extends Exception {
 	}
-	
-	class ExceptionPuppy extends ExceptionDog {
-		//These exception subclasses are empty; they contain no code
+	/**
+	 * Inner class ExceptionPuppy extends ExceptionDog class
+	 */
+	public static class ExceptionPuppy extends ExceptionDog {
 	}
-	
-	public static void main(String[] args) throws IOException {
-	
-		DogHandler dogHandler = new DogHandler();
+
+	/**
+	 * main method
+	 * @param args arguments
+	 * @throws Exception 
+	 */
+
+	public static void main(String[] args)  {
+
+		/**
+		 * Try catch Block which throw exception of type ExceptionPuppy
+		 */
+		try {	
+			throw new ExceptionPuppy();
+		} 
+		catch (ExceptionPuppy e) {
+			System.err.println("getMessage():" + e.getMessage());
+			System.err.println("ExceptionPuppy  caught.");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
 		
-		try {
-			ExceptionDog exDog = (ExceptionDog) new Exception();
-//			if(exDog instanceof Exception) {
-//				System.out.println("exDog instance of Exception");
-//			}
-			
-		} catch (ClassCastException e) {
-			System.out.println(e.getMessage()); //ClassCastException
-			//e.printStackTrace();
-		}
+		/**
+		 * Try catch Block which throw exception of type IOException
+		 */
+		try {	
+			throw new IOException();
+		} 
+		catch (IOException e) {
+			System.err.println("IOException exception caught.");
+			System.err.println("getMessage():" + e.getMessage());
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
+		/**
+		 * Try catch Block which throw exception of type NullPointerException
+		 */
+		try {	
+			throw new NullPointerException();
+		} 
+		catch (NullPointerException e) {
+			System.err.println("NullPointerException caught.");
+			System.err.println("printStackTrace():" );
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
 		
-		System.out.println("----------------\n");
-		try {
-			ExceptionPuppy exPuppy = (ExceptionPuppy) new Exception();
-		} catch (Exception e){
-			System.err.println("Error"); //ClassCastException
+		/**
+		 * Try catch Block which throw exception of type ExceptionDog
+		 */	
+		try {	
+			throw new ExceptionDog();
+		} 
+		catch (ExceptionDog e) {
+			System.err.println("ExceptionDog caught.");
+			e.printStackTrace();
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		System.out.println("----------------\n");
-		try {
-			String str = null;
-			System.out.println(str.length());
-		} catch(NullPointerException e) {
-			System.out.println("NullPointerException Error");
-			System.out.println(e.getMessage());
+		/**
+		 * Try catch Block which throw exception of type Exception
+		 */	
+		try {	
+			throw new Exception();
+		} catch (Exception ex) {
+			System.err.println("Exception caught.");
+			ex.printStackTrace(); 
+			
 		}
-	
-		
-		
-//		2. Your program must have try catch blocks which throw exceptions of types:
-//			a. ExceptionDog
-//			b. ExceptionPuppy
-//			c. NullPointerException
-//			d. IOException
-		
-		/*
-		4. For the output, one can use System.err.println(), getMessage() and
-		printStackTrace() and other appropriate print statements to show that the
-		exception subclasses have been successfully caught. You are required to
-		select the right choice(s) of these method in each case to show that the
-		exception subclasses have been successfully caught
-		*/
-		
-		
 	}
-	
-	
 }
 
+		

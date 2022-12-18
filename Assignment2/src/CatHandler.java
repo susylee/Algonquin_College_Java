@@ -1,45 +1,67 @@
-
+/**
+ * This class demonstrates if the subclass exceptions will be caught in the catch block.
+ * 
+ * File name: CatHandler.java
+ * Course: CST8284_313
+ * Professor: Fedor Ilitchev
+ * Assignment: Assignment02
+ * Date: November 30, 2022 
+ * 
+ * @author Su Yeoun Lee
+ * @version 11.0.16
+ * @since 1.8.0_342
+ * 
+ */
 public class CatHandler {
-
+	  /**
+     * Inner class ExceptionAlpha extends Exception
+     */
 	class ExceptionAlpha extends Exception {
-		// catch block of type ExceptionAlpha.
 	}
-
-
-	//Add two exception subclasses named ExceptionBeta and ExceptionGammer
-	class ExceptionBeta extends ExceptionAlpha {
-		
+	  /**
+     * Inner class ExceptionBeta extends ExceptionAlpha
+     */
+	 class ExceptionBeta extends ExceptionAlpha {
 	}
-
-	class ExceptionGammer extends ExceptionBeta{
+	  /**
+     * Inner class ExceptionGammer extends ExceptionBeta
+     */
+	 class ExceptionGammer extends ExceptionBeta{
 	}
+	
+	/**
+	 * the main method
+	 * @param args arguments
+	 */
 	
 	public static void main(String[] args) {
+		/**
+		 * Instance of CatHandler class
+		 */
+		CatHandler catHandler = new CatHandler();
 		
-		CatHandler cat = new CatHandler();
-		ExceptionBeta exBeta = cat.new ExceptionBeta();
-	
+		/**
+		 * Try catch Block which throw catHandler.new ExceptionBeta().
+		 */
 		try {
-		} catch (NullPointerException e) {
-			//System.out.println(e.getMessage());
-			//System.out.println(e.toString());
-	
+			throw catHandler.new ExceptionBeta();
+		} catch (ExceptionAlpha e) {
+			System.err.println("Catching ExceptionBeta: ");
+			e.printStackTrace();
 		}
 		
-		System.out.println("--------------------------------------------------------\n");
-		ExceptionGammer exGamm = cat.new ExceptionGammer();
-
-	
-		 
-		
-		/*
-		3. For the output, one can use System.err.println(), getMessage() and
-		printStackTrace() and other appropriate print statements to show that the
-		exception subclasses have been successfully caught. You are required to
-		select the right choice(s) of these method in each case to show that the
-		exception subclasses have been successfully caught.
+		/**
+		 * Try catch Block which throw catHandler.new ExceptionGammer().
 		 */
-		
+		try {
+			throw catHandler.new ExceptionGammer();
+		}catch (ExceptionAlpha e) {
+			System.err.print("Catching ExceptionGammer: ");
+			System.out.println("getMessage():" + e.getMessage());
+			e.printStackTrace();
+	
+		}
+
 	}
 
 }
